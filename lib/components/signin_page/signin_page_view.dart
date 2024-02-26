@@ -5,21 +5,24 @@ import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart'
 import 'package:basic_task/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:gap/gap.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:sizer/sizer.dart';
-import 'package:social_media_buttons/social_media_button.dart';
+
 
 class SigninPageView extends State<SigninPage> {
   SigninPageViewModel? viewModel;
   SigninPageView() {
     viewModel = SigninPageViewModel();
   }
-  
+  final formkey = GlobalKey<FormState>();
+  TextEditingController email = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFffffff),
+      backgroundColor:const Color(0xFFffffff),
       body: bodyContend(),
     );
   }
@@ -39,7 +42,7 @@ class SigninPageView extends State<SigninPage> {
                     image: DecorationImage(image: AssetImage("assets/jpg/cloud4.jpg"),fit: BoxFit.cover)
                   ),  
                   child: Container(
-                    margin: EdgeInsets.only(right: 300,bottom: 150),
+                    margin:const EdgeInsets.only(right: 300,bottom: 150),
                     child: IconButton(
                       onPressed:() {
                         Navigator.pop(context);
@@ -50,45 +53,54 @@ class SigninPageView extends State<SigninPage> {
                 ),
           
               ),
-               SizedBox(
-                height:2.h,
+               Gap(
+                2.h,
               ),
               
-             Text("Welcome Back",style: TextStyle(fontSize: 35,color:bluegradient,),),
+            const Text("Welcome Back",style: TextStyle(fontSize: 35,color:bluegradient,),),
               
             
-             Text("Login to Youre Account",style: TextStyle(fontSize: 15,color:color4 ),),
+            const Text("Login to Youre Account",style: TextStyle(fontSize: 15,color:color4 ),),
           
             
-              SizedBox(
-                height: 5.h,
+              Gap(
+                 5.h,
               ),
-            Container(
-              height: 50,
-              width: 360,
-              decoration: BoxDecoration(
-              color: Color5,
-              borderRadius: BorderRadius.circular(18)
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 60,top: 12),
-                  hintText: "Full Name",
-                  hintStyle: TextStyle(color:Color6 ,fontSize: 17),
-                  border: InputBorder.none,
-                  prefixIcon: Icon(Icons.person,color: Color6,)
+            Form(
+              key: formkey,
+              child: Container(
+                height: 6.h,
+                width: 90.w,
+                decoration: BoxDecoration(
+                color: Color5,
+                borderRadius: BorderRadius.circular(18.sp)
+                ),
+                child: TextFormField(
+               validator: (val) => val!.isEmpty || !val.contains("@")
+              ? "enter a valid email"
+              : null,
+                  decoration:const InputDecoration(
+                    
+                    contentPadding: EdgeInsets.only(left: 60,top: 12),
+                    hintText: "User@gmail.com",
+                    hintStyle: TextStyle(color:Color6 ,fontSize: 17),
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.mail,color: Color6,)
+                  ),
+                  
+                  
                 ),
               ),
             ),
-            SizedBox(
-              height:3.h,
+            Gap(
+              3.h,
             ),
              Container(
-              height: 50,
-              width: 360,
+              height: 6.h,
+              width:90.w,
               decoration: BoxDecoration(
               color: Color5,
-              borderRadius: BorderRadius.circular(18)
+              borderRadius: BorderRadius.circular(18.sp)
               ),
               child:const TextField(
                 decoration: InputDecoration(
@@ -103,65 +115,67 @@ class SigninPageView extends State<SigninPage> {
                 
               ),
             ),
-            SizedBox(
-              height:3.h,
+            Gap(
+              3.h,
             ),
             Row(
               children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 18),
+                margin:const EdgeInsets.only(left: 18),
                 child: RoundCheckBox( 
-                size: 15, 
+                size: 1.5.h, 
                 checkedColor: Color6,
                 borderColor: Color6,
                 
                 onTap: (selected) {},),
               ), 
-              SizedBox(
-                width:4.w,
+              Gap(
+                3.w,
               ),
-              Container(
-                child: Text("Remember Me",style:TextStyle(color: color4),),
-              ),
-              SizedBox(
-                width: 110,
+              
+              const Text("Remember Me",style:TextStyle(color: color4),),
+              
+              Gap(
+                 30.w,
               ),
               TextButton(
                 onPressed:() {
                   
                 },
-                child: Container(
-                  child: Text("Forgot password?",style: TextStyle(color: Color6,fontWeight: FontWeight.bold),),
-                ),
+              
+                  child: const Text("Forgot password?",style: TextStyle(color: Color6,fontWeight: FontWeight.bold),),
+
               )
               ],
             ),
-            SizedBox(
-              height: 13,
+            Gap(
+              2.h,
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage()));
+                if(formkey.currentState!.validate()){
+                 return print(email);
+                }
               },
               child: Container(
-                height: 50,
-                width: 300,
+                height: 6.h,
+                width: 70.w,
                 decoration: BoxDecoration(
                   color: Color6,
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Center(
+                child:const Center(
                   child: Text("Signin",style: TextStyle(color: Colors.white,fontSize: 16),)),
               ),
             ),
-            SizedBox(
-              height: 10,
+            Gap(
+              2.h,
             ),
             Row(
           children: <Widget>[
             Expanded(
               child: Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -172,16 +186,13 @@ class SigninPageView extends State<SigninPage> {
                 ),
               ),
             ),
-            Container(
-              padding:  EdgeInsets.symmetric(horizontal: 8),
-              child:   Text(
-                "Or continue with",
-                style: TextStyle(fontSize: 17,color: Colors.black),
-              ),
+            const Text(
+              "Or continue with",
+              style: TextStyle(fontSize: 17,color: Colors.black),
             ),
             Expanded(
               child: Container(
-                margin:EdgeInsets.only(right: 10) ,
+                margin:const EdgeInsets.only(right: 10) ,
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -194,48 +205,49 @@ class SigninPageView extends State<SigninPage> {
             ),
           ],
                 ),
-                SizedBox(
-          height: 10,
+                Gap(
+                1.h,
                 ),
                 Row(
                  mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: CircleAvatar(
+            
+              const CircleAvatar(
                 backgroundImage: AssetImage("assets/jpg/facebook.png"),
               ),
+            
+            Gap(
+               3.1.w,
             ),
-            SizedBox(
-              width: 5.h,
-            ),
-             Container(
-               child: CircleAvatar(
+             
+              const  CircleAvatar(
                 backgroundImage: AssetImage("assets/jpg/google.png"),
                          ),
-             ),
-              SizedBox(
-              width: 5.h,
+             
+              Gap(
+               3.w,
             ),
-             Container(
-               child: CircleAvatar(
+             
+               const CircleAvatar(
                 backgroundImage: AssetImage("assets/jpg/apple3.jpg"),
                          ),
-             )
+             
           ],
-                ),
-                SizedBox(
-          height:5,
-                ),
+        ),
+          Gap(
+             0.1.h,
+              ),
                 Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Don't have an account?",style: TextStyle(fontSize: 15,color:color4 ),),
-            SizedBox(width: 10,),
+            Text("Don't have an account?",style: TextStyle(fontSize:2.h,color:color4 ),),
+            SizedBox(width: 2.w,),
             TextButton(
               onPressed: () {
+                // ignore: non_constant_identifier_names
                 Navigator.push(context, MaterialPageRoute(builder: (Context) => SignUpPage()));
               },
-              child: Text("Sign up",style: TextStyle(fontSize:17,fontWeight: FontWeight.bold,color: bluegradient ),))
+              child: Text("Sign up",style: TextStyle(fontSize:2.h,fontWeight: FontWeight.bold,color: bluegradient ),))
           ],
                 )
               ],

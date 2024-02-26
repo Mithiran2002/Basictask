@@ -4,6 +4,7 @@ import 'package:basic_task/components/welcome_page/welcome_page_view.dart';
 import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
 import 'package:basic_task/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 
 class WelcomePageView extends State<WelcomePage> {
@@ -20,6 +21,8 @@ class WelcomePageView extends State<WelcomePage> {
   }
   Widget pageContend(){
     return Container(
+      height: 100.h,
+      width: 100.w,
       decoration:const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/jpg/cloud2.jpg"),fit: BoxFit.cover),
       ),
@@ -36,40 +39,42 @@ class WelcomePageView extends State<WelcomePage> {
         ),
         child: Column(
           children: <Widget>[
-            Container(
+           Container(
+              // ignore: prefer_const_constructors
               padding: EdgeInsets.only(left:20,top: 180),
               width: 100.w,
-              child: Text("The best \n app for \n City Weather",style: TextStyle(color: Colors.white,fontSize:44,fontWeight: FontWeight.bold),),
+              child:const Text("The best \n app for \n City Weather",style: TextStyle(color: Colors.white,fontSize:44,fontWeight: FontWeight.bold),),
             ),
-            SizedBox(
-              height: 230,
+            Gap(
+               25.h
             ),
             GestureDetector(
               onTap: () {
+                // ignore: non_constant_identifier_names
                 Navigator.push(context, MaterialPageRoute(builder: (Context) => SigninPage()));
               },
               child: Container(
-                height: 50,
-                width: 340,
+                height:6.h,
+                width: 80.w,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(18.sp),
                   color: Colors.white12,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text("Sign in",style:TextStyle(color: Colors.white,fontSize: 16)),
                 ),
               ),
             ),
-            SizedBox(
-             height: 25,
+            Gap(
+             3.h,
             ),
             TextButton(
               onPressed: () {
                 Navigator.push(context,MaterialPageRoute(builder: (context) => SignUpPage()));
               },
-              child: Container(
-                child: Text('Create Account',style:TextStyle(color: Colors.white,fontSize: 16)),
-              ),
+              child: 
+                const Text('Create Account',style:TextStyle(color: Colors.white,fontSize: 16)),
+              
             )
           ],
         ),
