@@ -20,7 +20,7 @@ class WelcomePageView extends State<WelcomePage> {
   }
   Widget pageContend(){
     return Container(
-      decoration: BoxDecoration(
+      decoration:const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/jpg/cloud2.jpg"),fit: BoxFit.cover),
       ),
       child: Container(

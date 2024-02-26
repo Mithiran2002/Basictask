@@ -4,6 +4,7 @@ import 'package:basic_task/components/signup_page/signup_page_view_model.dart';
 import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
 import 'package:basic_task/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class SignUpPageView extends State<SignUpPage> {
   SignUpPageViewModel? viewModel;
@@ -14,6 +15,7 @@ class SignUpPageView extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
+    resizeToAvoidBottomInset: false,
      appBar: AppBar(
       leading: Container(
         margin: EdgeInsets.only(left: 10,top: 10),
@@ -35,7 +37,7 @@ class SignUpPageView extends State<SignUpPage> {
         children: <Widget>[
          
           SizedBox(
-            height: 60,
+            height:5.h,
           ),
           Container(
             alignment: Alignment.center,
@@ -47,22 +49,16 @@ class SignUpPageView extends State<SignUpPage> {
            
             child: Text("Create your'e new account",style: TextStyle(fontSize: 18,color: color4),),
           ),
-          SizedBox(height: 40,),
+          SizedBox(height:20.h,),
            Container(
-            height: 50,
-            width: 360,
+            height: 6.h,
+            width: 90.w,
             decoration: BoxDecoration(
             color: Color5,
-            borderRadius: BorderRadius.circular(18)
+            borderRadius: BorderRadius.circular(15.sp)
             ),
             child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 60,top: 12),
-                hintText: "Full Name",
-                hintStyle: TextStyle(color:Color6 ,fontSize: 17),
-                border: InputBorder.none,
-                prefixIcon: Icon(Icons.person,color: Color6,)
-              ),
+              decoration: customDecoration
             ),
           ),
           SizedBox(
@@ -76,13 +72,7 @@ class SignUpPageView extends State<SignUpPage> {
             borderRadius: BorderRadius.circular(18)
             ),
             child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 60,top: 12),
-                hintText: "User@gmail.com",
-                hintStyle: TextStyle(color:Color6 ,fontSize: 17),
-                border: InputBorder.none,
-                prefixIcon: Icon(Icons.mail,color: Color6,)
-              ),
+              decoration: customDecoration
              
             ),
           ),
@@ -149,7 +139,7 @@ class SignUpPageView extends State<SignUpPage> {
             padding:  EdgeInsets.symmetric(horizontal: 8),
             child:   Text(
               "Or continue with",
-              style: TextStyle(fontSize: 17,color: Colors.black),
+              style: TextStyle(fontSize: 15,color: Colors.black),
             ),
           ),
           Expanded(
