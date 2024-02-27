@@ -12,28 +12,33 @@ const Color6 = Color(0xFF19488b);
 
 //TextFormField Decoration
 InputDecoration? customDecoration = InputDecoration(
-    fillColor:Color5,
-    contentPadding: EdgeInsets.symmetric(horizontal: 25.sp, vertical: 12.sp),
+  fillColor: Color5,
+  filled: true,
+    focusColor: Color6,
+    contentPadding: EdgeInsets.symmetric(horizontal: 2.sp, vertical: 10.sp),
     hintText: " Create password",
     hintStyle: TextStyle(color: Color6, fontSize: 17),
-    errorBorder: OutlineInputBorder(),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(18.sp)),
+      borderSide:BorderSide(color: Colors.red,),
+    ),
     focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: color4, width: 2),
+        borderSide: BorderSide(color:color4, width: 2),
         borderRadius: BorderRadius.all(
-          Radius.circular(30.sp),
+          Radius.circular(20.sp),
         )),
     enabledBorder: OutlineInputBorder(
         borderSide: BorderSide.none,
-        borderRadius: BorderRadius.all(Radius.circular(10.sp))),
+        borderRadius: BorderRadius.all(Radius.circular(18.sp))),
     border: OutlineInputBorder(
         borderSide: BorderSide.none,
-        borderRadius: BorderRadius.all(Radius.circular(10.sp))),
+        borderRadius: BorderRadius.all(Radius.circular(18.sp))),
     prefixIcon: Icon(
       Icons.lock,
       color: Color6,
     ));
 
-InputDecoration customDecor({String? text , Icon? preFixIcon,Color? color}) {
+InputDecoration customDecor({String? text , Icon? preFixIcon,Color? color, contendpadding}) {
   return customDecoration!
-      .copyWith(hintText: text, prefixIcon:preFixIcon,fillColor: Color6 );
+      .copyWith(hintText: text, prefixIcon:preFixIcon,fillColor: Color5,contentPadding:contendpadding );
 }

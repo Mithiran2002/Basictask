@@ -1,13 +1,13 @@
-import 'package:basic_task/components/signin_page/signin_page.dart';
-import 'package:basic_task/components/signin_page/signin_page_view_model.dart';
-import 'package:basic_task/components/signup_page/signup_page.dart';
-import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
-import 'package:basic_task/constant.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:gap/gap.dart';
-import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/material.dart';
+import 'package:basic_task/constant.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
+import 'package:basic_task/components/signin_page/signin_page.dart';
+import 'package:basic_task/components/signup_page/signup_page.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:basic_task/components/signin_page/signin_page_view_model.dart';
+import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
 
 
 class SigninPageView extends State<SigninPage> {
@@ -68,53 +68,33 @@ class SigninPageView extends State<SigninPage> {
               ),
             Form(
               key: formkey,
-              child: Container(
-                height: 6.h,
-                width: 90.w,
-                decoration: BoxDecoration(
-                color: Color5,
-                borderRadius: BorderRadius.circular(18.sp)
-                ),
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal:15.sp,vertical: 6.sp ),
                 child: TextFormField(
-               validator: (val) => val!.isEmpty || !val.contains("@")
+                  validator: (val) => val!.isEmpty || !val.contains("@")
               ? "enter a valid email"
               : null,
-                  decoration:const InputDecoration(
-                    
-                    contentPadding: EdgeInsets.only(left: 60,top: 12),
-                    hintText: "User@gmail.com",
-                    hintStyle: TextStyle(color:Color6 ,fontSize: 17),
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.mail,color: Color6,)
+                  decoration:customDecor(
+                    text: "User@gmail.com",
+                    preFixIcon: Icon(Icons.mail,color: Color6,)
                   ),
-                  
                   
                 ),
               ),
             ),
             Gap(
-              3.h,
+              1.h,
             ),
-             Container(
-              height: 6.h,
-              width:90.w,
-              decoration: BoxDecoration(
-              color: Color5,
-              borderRadius: BorderRadius.circular(18.sp)
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal:15.sp,vertical: 6.sp ),
+                child: TextFormField(
+                 decoration:customDecor(
+                  text: "password",
+                 ),
+                 obscureText: true,
+                 obscuringCharacter: '●',style: TextStyle(color: Color6),
+               ),
               ),
-              child:const TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 60,top: 12),
-                  hintText: "Password",
-                  hintStyle: TextStyle(color:Color6 ,fontSize: 17),
-                  border: InputBorder.none,
-                  prefixIcon: Icon(Icons.lock,color: Color6,)
-                ),
-                obscureText: true,
-                obscuringCharacter: '●',style: TextStyle(color: Color6),
-                
-              ),
-            ),
             Gap(
               3.h,
             ),

@@ -51,12 +51,13 @@ class SignUpPageView extends State<SignUpPage> {
               child: const Text(
                 "Register",
                 style: TextStyle(
-                    fontSize: 32, color: Color6, fontWeight: FontWeight.w300),
+                    fontSize: 32, color: Color6, fontWeight: FontWeight.w500),
               ),
             ),
             Container(
               alignment: Alignment.center,
-              child: const Text(
+              child:  Text(
+
                 "Create your'e new account",
                 style: TextStyle(fontSize: 18, color: color4),
               ),
@@ -64,17 +65,25 @@ class SignUpPageView extends State<SignUpPage> {
             Gap(
               10.h,
             ),
-            TextField(decoration: customDecor(
-              text: 'Full Name',
-              preFixIcon: Icon(Icons.person,size:3.h,color: Color6,)
-            )),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 10.sp),
+              child: TextField(decoration: customDecor(
+                text: 'Full Name',
+                preFixIcon: Icon(Icons.person,size:3.h,color: Color6,),
+                contendpadding: EdgeInsets.symmetric(horizontal: 2.sp, vertical: 10.sp),
+              )),
+            ),
             Gap(
               3.h,
             ),
-            TextField(decoration: customDecor(
-                   text: 'User@gmail.com',
-                  preFixIcon:  Icon(Icons.mail,size:3.h,color: Color6,)
-            )),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal:10.sp),
+              child: TextField(decoration: customDecor(
+                     text: 'User@gmail.com',
+                    preFixIcon:  Icon(Icons.mail,size:3.h,color: Color6,),
+                    contendpadding: EdgeInsets.symmetric(horizontal: 2.sp, vertical: 10.sp),
+              )),
+            ),
             Gap(
               3.h,
             ),
@@ -84,7 +93,7 @@ class SignUpPageView extends State<SignUpPage> {
                 decoration: customDecor(
                 text: 'Create Password',
                 preFixIcon: Icon(Icons.lock,color: Color6,size: 3.h,),
-                color: Color6),
+                color: Color5),
                 obscureText: true,
                 obscuringCharacter: '●',
                 style: TextStyle(color: Color6),
@@ -172,7 +181,7 @@ class SignUpPageView extends State<SignUpPage> {
               ],
             ),
             Gap(
-              2.h,
+              1.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
