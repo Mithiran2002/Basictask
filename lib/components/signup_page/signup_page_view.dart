@@ -5,8 +5,8 @@ import 'package:basic_task/constant.dart';
 import 'package:social_media_buttons/social_media_buttons.dart';
 import 'package:basic_task/components/signup_page/signup_page.dart';
 import 'package:basic_task/components/signin_page/signin_page.dart';
+import 'package:basic_task/components/welcome_page/welcome_page.dart';
 import 'package:basic_task/components/signup_page/signup_page_view_model.dart';
-import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
 
 
 class SignUpPageView extends State<SignUpPage> {
@@ -22,7 +22,7 @@ class SignUpPageView extends State<SignUpPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: Container(
-          margin: const EdgeInsets.only(left: 10, top: 10),
+          margin:  EdgeInsets.only(left:12.sp, top:13.sp),
           height: 5.h,
           width: 5.w,
           decoration: BoxDecoration(
@@ -43,25 +43,18 @@ class SignUpPageView extends State<SignUpPage> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[
+          children: [
             Gap(
-              2.h,
+              1.h,
             ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(top: 7),
-              child: const Text(
-                "Register",
-                style: TextStyle(
-                    fontSize: 37, color: color6, fontWeight: FontWeight.w700),
-              ),
+            Text(
+              "Register",
+              style: TextStyle(
+                  fontSize:30.sp, color: color6, fontWeight: FontWeight.w700),
             ),
-            Container(
-              alignment: Alignment.center,
-              child:const Text(
-               "create youre new account",
-                style: TextStyle(fontSize: 18, color: color4),
-              ),
+             Text(
+             "create youre new account",
+              style: TextStyle(fontSize:13.sp, color: color4,fontWeight: FontWeight.w600),
             ),
             Gap(
               5.h,
@@ -81,9 +74,10 @@ class SignUpPageView extends State<SignUpPage> {
               padding:  EdgeInsets.symmetric(horizontal:10.sp),
               child: TextFormField(
                 validator: (value) {
-                  if(value == null || !value.isEmpty){
+                  if(value == null || !value.isNotEmpty){
                     return "Please Enter Valid email";
                   }
+                  return null;
                 },
                   decoration: customDecor(
                      text: 'User@gmail.com',
@@ -103,63 +97,59 @@ class SignUpPageView extends State<SignUpPage> {
                 color:color5),
                 obscureText: true,
                 obscuringCharacter: '●',
-                style: const TextStyle(color: color6),
+                style:  TextStyle(color: color6),
               ),
             ),
             Gap(
-              4.h,
+              4.5.h,
             ),
-            TextButton(
+            ElevatedButton(
+              style: ButtonStyle(
+                maximumSize: MaterialStatePropertyAll(Size(80.w,6.h)),
+                backgroundColor: MaterialStatePropertyAll(Color(0xFF19488b))
+              ),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WelcomePage()));
-                   
               },
-              child: Container(
-                height: 5.5.h,
-                width: 80.w,
-                decoration: BoxDecoration(
-                  color: color6,
-                  borderRadius: BorderRadius.circular(18.sp),
-                ),
-                child: const Center(
-                    child: Text(
-                  "Create Account",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                )),
+              child:const Center(
+                child: Text(
+                           "Create Account",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                 ),
               ),
             ),
             Gap(
               8.h,
             ),
             Row(
-              children: <Widget>[
+              children: [
                 Expanded(
                   child: Container(
-                    margin: const EdgeInsets.only(left: 10),
+                    margin:  EdgeInsets.only(left:8.sp,right: 2.sp),
                     decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           color: Colors.grey,
-                          width: 1.0,
+                          width: 1.5
                         ),
                       ),
                     ),
                   ),
                 ),
-                const Text(
+                 Text(
                   "Or continue with",
-                  style: TextStyle(fontSize: 15, color: Colors.black),
+                  style: TextStyle(fontSize:12.sp , color: Colors.black,fontWeight: FontWeight.w500),
                 ),
                 Expanded(
                   child: Container(
                     // ignore: prefer_const_constructors
-                    margin: EdgeInsets.only(right: 10),
+                    margin: EdgeInsets.only(right:8.sp,left: 2.sp),
                     decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           color: Colors.grey,
-                          width: 1.0,
+                          width: 1.5,
                         ),
                       ),
                     ),
@@ -191,7 +181,7 @@ class SignUpPageView extends State<SignUpPage> {
               ],
             ),
             Gap(
-              1.h,
+              3.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

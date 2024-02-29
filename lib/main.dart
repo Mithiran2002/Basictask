@@ -1,6 +1,7 @@
-import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
-import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/material.dart';
+import 'package:basic_task/components/welcome_page/welcome_page.dart';
+
 
 
 void main() {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home:WelcomePage(),
+          home: WelcomePage(),
         );
       }
     );

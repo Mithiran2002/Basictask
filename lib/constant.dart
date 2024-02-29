@@ -17,7 +17,7 @@ InputDecoration? customDecoration = InputDecoration(
     focusColor: color6,
     contentPadding: EdgeInsets.symmetric(horizontal: 8.sp, vertical: 10.sp),
     hintText: " Create password",
-    hintStyle: TextStyle(color: color6, fontSize: 17),
+    hintStyle: TextStyle(color: color6, fontSize:14.5.sp),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.sp)),
       borderSide:BorderSide(color: Colors.red,),
