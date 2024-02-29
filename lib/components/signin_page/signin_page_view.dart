@@ -5,10 +5,7 @@ import 'package:basic_task/constant.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:basic_task/components/signin_page/signin_page.dart';
 import 'package:basic_task/components/signup_page/signup_page.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:basic_task/components/signin_page/signin_page_view_model.dart';
-import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
-
 
 class SigninPageView extends State<SigninPage> {
   SigninPageViewModel? viewModel;
@@ -17,7 +14,9 @@ class SigninPageView extends State<SigninPage> {
   }
   final formkey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
-
+  TextEditingController password = TextEditingController();
+  bool isvalid = false;
+   double padValue = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +33,9 @@ class SigninPageView extends State<SigninPage> {
           child: Column(
             children: [
               ClipPath(
-                clipper: WaveClipperTwo(flip: true),
+                clipper: BottomWaveClipper(),
                 child: Container(
-                  height: 34.h,
+                  height: 30.h,
                   width: 100.w,
                   decoration:const BoxDecoration(
                     image: DecorationImage(image: AssetImage("assets/jpg/cloud4.jpg"),fit: BoxFit.cover)
@@ -47,17 +46,16 @@ class SigninPageView extends State<SigninPage> {
                       onPressed:() {
                         Navigator.pop(context);
                       },
-                    icon: const Icon(Icons.arrow_back_ios)
+                    icon:  Icon(Icons.arrow_back_ios,size:16.sp,)
                     ),
                   ),
                 ),
-          
               ),
                Gap(
                 2.h,
               ),
               
-            const Text("Welcome Back",style: TextStyle(fontSize: 35,color:bluegradient,),),
+            const Text("Welcome Back",style: TextStyle(fontSize: 35,color:bluegradient,fontWeight: FontWeight.w600),),
               
             
             const Text("Login to Youre Account",style: TextStyle(fontSize: 15,color:color4 ),),
@@ -71,41 +69,45 @@ class SigninPageView extends State<SigninPage> {
               child: Padding(
                 padding:  EdgeInsets.symmetric(horizontal:15.sp,vertical: 6.sp ),
                 child: TextFormField(
-                  validator: (val) => val!.isEmpty || !val.contains("@")
-              ? "enter a valid email"
-              : null,
+                  validator: (val) => val!.isEmpty || !val.contains("A-Z")
+                              ? "Please Enter the Valid Name"
+                              : null,
                   decoration:customDecor(
-                    text: "User@gmail.com",
-                    preFixIcon: Icon(Icons.mail,color: Color6,)
+                    text: "Full Name",
+                    preFixIcon: Icon(Icons.person,color: color6,size: 15.sp,)
                   ),
                   
                 ),
               ),
             ),
             Gap(
-              1.h,
+              2.h,
             ),
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal:15.sp,vertical: 6.sp ),
                 child: TextFormField(
+                  validator: (value){
+                    if(value!. isEmpty){
+                      return "Please enter valid password";
+                    }if(value.length < 8){
+                      return "Must be more than 2 Characters";
+                    }
+                  },
                  decoration:customDecor(
                   text: "password",
                  ),
                  obscureText: true,
-                 obscuringCharacter: '●',style: TextStyle(color: Color6),
+                 obscuringCharacter: '●',style: TextStyle(color:color6),
                ),
               ),
-            Gap(
-              3.h,
-            ),
             Row(
               children: <Widget>[
               Container(
-                margin:const EdgeInsets.only(left: 18),
+                margin: EdgeInsets.only(left: 13.sp),
                 child: RoundCheckBox( 
                 size: 1.5.h, 
-                checkedColor: Color6,
-                borderColor: Color6,
+                checkedColor: color6,
+                borderColor: color6,
                 
                 onTap: (selected) {},),
               ), 
@@ -123,25 +125,26 @@ class SigninPageView extends State<SigninPage> {
                   
                 },
               
-                  child: const Text("Forgot password?",style: TextStyle(color: Color6,fontWeight: FontWeight.bold),),
+                  child: const Text("Forgot password?",style: TextStyle(color: color6,fontWeight: FontWeight.bold),),
 
               )
               ],
             ),
             Gap(
-              2.h,
+              8.h,
             ),
             TextButton(
               onPressed: () {
                 if(formkey.currentState!.validate()){
-                 return print(email);
+                 return print(email) 
+                 
                 }
               },
               child: Container(
-                height: 6.h,
+                height: 5.5.h,
                 width: 70.w,
                 decoration: BoxDecoration(
-                  color: Color6,
+                  color: color6,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child:const Center(
@@ -151,73 +154,8 @@ class SigninPageView extends State<SigninPage> {
             Gap(
               2.h,
             ),
-            Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.only(left: 10),
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const Text(
-              "Or continue with",
-              style: TextStyle(fontSize: 17,color: Colors.black),
-            ),
-            Expanded(
-              child: Container(
-                margin:const EdgeInsets.only(right: 10) ,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-                ),
-                Gap(
-                1.h,
-                ),
-                Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-              const CircleAvatar(
-                backgroundImage: AssetImage("assets/jpg/facebook.png"),
-              ),
-            
-            Gap(
-               3.1.w,
-            ),
-             
-              const  CircleAvatar(
-                backgroundImage: AssetImage("assets/jpg/google.png"),
-                         ),
-             
-              Gap(
-               3.w,
-            ),
-             
-               const CircleAvatar(
-                backgroundImage: AssetImage("assets/jpg/apple3.jpg"),
-                         ),
-             
-          ],
-        ),
-          Gap(
-             0.1.h,
-              ),
-                Row(
+          
+           Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Don't have an account?",style: TextStyle(fontSize:2.h,color:color4 ),),
@@ -236,4 +174,24 @@ class SigninPageView extends State<SigninPage> {
       ],
     );
   }
+}
+class BottomWaveClipper extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+   var path = new Path();
+    path.lineTo(0.0, size.height - 40);
+    path.quadraticBezierTo(
+    size.width / 4, size.height - 80, size.width / 2, size.height - 40);
+    path.quadraticBezierTo(size.width - (size.width / 4), size.height,
+    size.width, size.height - 60);
+    path.lineTo(size.width, 2.5);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip( CustomClipper<Path> oldClipper) {
+   return false;
+  }
+
 }

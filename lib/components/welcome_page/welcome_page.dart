@@ -1,11 +1,11 @@
+import 'package:gap/gap.dart';
+import 'package:sizer/sizer.dart';
+import 'package:flutter/material.dart';
+import 'package:basic_task/constant.dart';
 import 'package:basic_task/components/signin_page/signin_page.dart';
 import 'package:basic_task/components/signup_page/signup_page.dart';
 import 'package:basic_task/components/welcome_page/welcome_page_view.dart';
 import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
-import 'package:basic_task/constant.dart';
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:sizer/sizer.dart';
 
 class WelcomePageView extends State<WelcomePage> {
   WelcomePageViewModel? viewModel;
@@ -43,7 +43,7 @@ class WelcomePageView extends State<WelcomePage> {
               // ignore: prefer_const_constructors
               padding: EdgeInsets.only(left:20,top: 180),
               width: 100.w,
-              child:const Text("The best \n app for \n City Weather",style: TextStyle(color: Colors.white,fontSize:44,fontWeight: FontWeight.bold),),
+              child:const Text("The best \n app for \n City Weather",style: TextStyle(color: Colors.white,fontSize:42,fontWeight: FontWeight.w500),),
             ),
             Gap(
                25.h
@@ -57,11 +57,11 @@ class WelcomePageView extends State<WelcomePage> {
                 height:6.h,
                 width: 80.w,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18.sp),
+                  borderRadius: BorderRadius.circular(10.sp),
                   color: Colors.white12,
                 ),
                 child: const Center(
-                  child: Text("Sign in",style:TextStyle(color: Colors.white,fontSize: 16)),
+                  child: Text("Sign in",style:TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500)),
                 ),
               ),
             ),

@@ -38,11 +38,10 @@ dependencies:
   sizer: ^2.0.15
   flutter_custom_clippers: ^2.1.0
   roundcheckbox: ^2.0.5
-  social_media_buttons: ^1.0.0
   gap: ^3.0.1
   email_validator: ^2.1.17
-  flutter_social_button: ^1.1.4+1
-
+  path_drawer: ^0.0.1
+  social_media_buttons: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

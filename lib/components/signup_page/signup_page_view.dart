@@ -2,10 +2,12 @@ import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:basic_task/constant.dart';
-import 'package:basic_task/components/signin_page/signin_page.dart';
+import 'package:social_media_buttons/social_media_buttons.dart';
 import 'package:basic_task/components/signup_page/signup_page.dart';
+import 'package:basic_task/components/signin_page/signin_page.dart';
 import 'package:basic_task/components/signup_page/signup_page_view_model.dart';
 import 'package:basic_task/components/welcome_page/welcomw_page_view_model.dart';
+
 
 class SignUpPageView extends State<SignUpPage> {
   SignUpPageViewModel? viewModel;
@@ -22,10 +24,10 @@ class SignUpPageView extends State<SignUpPage> {
         leading: Container(
           margin: const EdgeInsets.only(left: 10, top: 10),
           height: 5.h,
-          width: 10.w,
+          width: 5.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18.sp),
-            color: Color5,
+            color: color5,
           ),
           child: IconButton(
               onPressed: () {
@@ -33,7 +35,7 @@ class SignUpPageView extends State<SignUpPage> {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                size: 12.sp,
+                size: 12.sp,color: bluegradient,
               )),
         ),
       ),
@@ -43,33 +45,32 @@ class SignUpPageView extends State<SignUpPage> {
         child: Column(
           children: <Widget>[
             Gap(
-              5.h,
+              2.h,
             ),
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 7),
               child: const Text(
                 "Register",
                 style: TextStyle(
-                    fontSize: 32, color: Color6, fontWeight: FontWeight.w500),
+                    fontSize: 37, color: color6, fontWeight: FontWeight.w700),
               ),
             ),
             Container(
               alignment: Alignment.center,
-              child:  Text(
-
-                "Create your'e new account",
+              child:const Text(
+               "create youre new account",
                 style: TextStyle(fontSize: 18, color: color4),
               ),
             ),
             Gap(
-              10.h,
+              5.h,
             ),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal: 10.sp),
               child: TextField(decoration: customDecor(
                 text: 'Full Name',
-                preFixIcon: Icon(Icons.person,size:3.h,color: Color6,),
+                preFixIcon: Icon(Icons.person,size: 15.sp,color: color6,),
                 contendpadding: EdgeInsets.symmetric(horizontal: 2.sp, vertical: 10.sp),
               )),
             ),
@@ -78,9 +79,15 @@ class SignUpPageView extends State<SignUpPage> {
             ),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal:10.sp),
-              child: TextField(decoration: customDecor(
+              child: TextFormField(
+                validator: (value) {
+                  if(value == null || !value.isEmpty){
+                    return "Please Enter Valid email";
+                  }
+                },
+                  decoration: customDecor(
                      text: 'User@gmail.com',
-                    preFixIcon:  Icon(Icons.mail,size:3.h,color: Color6,),
+                    preFixIcon:  Icon(Icons.mail,size: 15.sp,color: color6,),
                     contendpadding: EdgeInsets.symmetric(horizontal: 2.sp, vertical: 10.sp),
               )),
             ),
@@ -92,11 +99,11 @@ class SignUpPageView extends State<SignUpPage> {
               child: TextFormField(
                 decoration: customDecor(
                 text: 'Create Password',
-                preFixIcon: Icon(Icons.lock,color: Color6,size: 3.h,),
-                color: Color5),
+                preFixIcon: Icon(Icons.lock,color: color6,size: 15.sp,),
+                color:color5),
                 obscureText: true,
                 obscuringCharacter: '●',
-                style: TextStyle(color: Color6),
+                style: const TextStyle(color: color6),
               ),
             ),
             Gap(
@@ -106,12 +113,13 @@ class SignUpPageView extends State<SignUpPage> {
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WelcomePage()));
+                   
               },
               child: Container(
-                height: 6.h,
+                height: 5.5.h,
                 width: 80.w,
                 decoration: BoxDecoration(
-                  color: Color6,
+                  color: color6,
                   borderRadius: BorderRadius.circular(18.sp),
                 ),
                 child: const Center(
@@ -122,7 +130,7 @@ class SignUpPageView extends State<SignUpPage> {
               ),
             ),
             Gap(
-              5.h,
+              8.h,
             ),
             Row(
               children: <Widget>[
@@ -165,19 +173,21 @@ class SignUpPageView extends State<SignUpPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/jpg/facebook.png"),
-                ),
-                Gap(
-                  3.h,
-                ),
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/jpg/google.png"),
-                ),
-                Gap(3.h),
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/jpg/apple3.jpg"),
-                )
+                  SocialMediaButton.facebook(
+                    size: 22.sp,
+                    url: "",
+                  ),
+                  Gap(5.w),
+                    SocialMediaButton.google(
+                    size: 22.sp,
+                    url: "",
+                  ),
+                   Gap(5.w),
+                    SocialMediaButton.github(
+                    size: 22.sp,
+                    url: "",
+                  ),
+                 
               ],
             ),
             Gap(
@@ -190,15 +200,14 @@ class SignUpPageView extends State<SignUpPage> {
                   "Already have an account?",
                   style: TextStyle(fontSize: 2.h, color: color4),
                 ),
-                SizedBox(
-                  width: 1.w,
-                ),
+               
                 TextButton(
                     onPressed: () {
                       // ignore: non_constant_identifier_names
                       Navigator.push(
                           context,
                           MaterialPageRoute(
+                              // ignore: non_constant_identifier_names
                               builder: (Context) => SigninPage()));
                     },
                     child: Text(
